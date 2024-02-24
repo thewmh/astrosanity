@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
-
 import { sanityIntegration } from "@sanity/astro";
+
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,7 +10,7 @@ export default defineConfig({
     dataset: 'production',
     apiVersion: '2023-02-08',
     useCdn: false
-  })],
+  }), tailwind()],
   image: {
     domains: ['cdn.sanity.io']
   }

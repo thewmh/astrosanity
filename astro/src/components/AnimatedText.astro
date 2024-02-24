@@ -1,0 +1,85 @@
+---
+  export interface Props {
+    text: string[];
+  }
+  const { text } = Astro.props;
+---
+
+<div id="animated-text">
+  {text.map((el: string) => <span class="adjective">{el}</span>)}
+</div>
+
+<style>
+  :root {
+    --headline-color: hsl(0, 0%, 32%);
+  }
+
+  div {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+    font-size: var(--font-size-xl);
+    height: var(--font-size-xl);
+    font-weight: 700;
+  }
+
+  span {
+    color: var(--headline-color);
+    display: block;
+    position: relative;
+    overflow: hidden;
+    animation: word_up 7s infinite;
+    transition-timing-function: ease-in-out;
+    animation-delay: 2s;
+  }
+
+  span:first-of-type,
+  span:last-of-type {
+    color: hsl(0, 0%, 0%);
+  }
+
+  @keyframes word_up {
+    10% {
+      transform: translateY(-100%);
+    }
+
+    20% {
+      transform: translateY(-100%);
+    }
+
+    30% {
+      transform: translateY(-200%);
+    }
+
+    40% {
+      transform: translateY(-200%);
+    }
+
+    50% {
+      transform: translateY(-300%);
+    }
+
+    60% {
+      transform: translateY(-300%);
+    }
+
+    70% {
+      transform: translateY(-400%);
+    }
+
+    80% {
+      transform: translateY(-400%);
+    }
+
+    90% {
+      transform: translateY(-500%);
+    }
+
+    100% {
+      transform: translateY(-500%);
+    }
+  }
+</style>
