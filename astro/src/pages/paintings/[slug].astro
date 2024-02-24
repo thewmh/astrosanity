@@ -21,9 +21,9 @@
   const { title, dateProduced, mainImage, additionalImages }: { title: string, dateProduced: string, mainImage: any, additionalImages: any } = Astro.props;
   const url = localImagePath(urlForImage(mainImage).url());
 
-  const additionalImagesArr = additionalImages.map((image: any) => {
+  const additionalImagesArr = additionalImages ? additionalImages.map((image: any) => {
     return localImagePath(urlForImage(image).url());
-  })
+  }) : null;
 ---
 
 <Layout title={title}>

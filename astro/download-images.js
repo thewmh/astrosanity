@@ -1,12 +1,8 @@
-import {createClient} from "@sanity/client";
+import { createClient } from "@sanity/client";
 import imageUrlBuilder from '@sanity/image-url';
-// const createClient = require('@sanity/client');
-// const fetch = require('node-fetch');
 import fs from 'fs'
 import path from "path";
 import https from 'https';
-// const fs = require('fs');
-// const path = require('path');
 
 const client = createClient({
   projectId: '7m8frgh6',
@@ -49,7 +45,7 @@ async function fetchAndDownloadImages() {
   for (let post of posts) {
     const mainImageUrl = imageBuilder.image(post.mainImage).url();
     await downloadImage(mainImageUrl, path.basename(mainImageUrl));
-
+    if (!post.additionalImages) return;
     for (let image of post.additionalImages) {
       const imageUrl = imageBuilder.image(image).url()
       await downloadImage(imageUrl, path.basename(imageUrl));
